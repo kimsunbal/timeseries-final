@@ -1,0 +1,51 @@
+데이터: 2010-01-01 ~ 2025-12-31 (5844행)
+
+=== smoke: v3c 재현 대조 (v3_results.csv) ===
+  AIC            got= -23830.9605 exp= -23830.9600 tol=±0.5    ✓
+  BIC            got= -23698.8527 exp= -23698.8500 tol=±0.5    ✓
+  MAE_2025       got=   2667.5104 exp=   2667.5100 tol=±3.0    ✓
+  MAPE_2025_%    got=      3.6297 exp=      3.6297 tol=±0.02   ✓
+  PI95_cov_%     got=     95.3425 exp=     95.3420 tol=±0.4    ✓
+  PINAW          got=      0.2977 exp=      0.2977 tol=±0.006  ✓
+  Winkler        got=  18304.8613 exp=  18304.8600 tol=±60.0   ✓
+  resid_skew     got=     -1.7547 exp=     -1.7547 tol=±0.03   ✓
+  resid_kurt     got=     13.8997 exp=     13.8997 tol=±0.08   ✓
+  rolling_MAE    got=      1357.3 exp=      1357.3 tol=±5     ✓
+  → PASS: self-contained 레시피가 v3c와 일치
+
+=== Leave-one-out 진단 ===
+
+=== BIC 후방제거 ===
+  [BIC] step 0: -ws_avg (BIC=-23707.48)  |S|=13
+  [BIC] step 1: -pop_total (BIC=-23715.98)  |S|=12
+  [BIC] step 2: -heat_th_2day_any (BIC=-23723.65)  |S|=11
+  [BIC] step 3: -cold_th_2day_any (BIC=-23730.80)  |S|=10
+  [BIC] 수렴: 더 낮추는 제거 없음  |S|=10
+  → v5_bic_backward(10): ['cdd_18', 'cdd_18_ma7', 'hdd_18', 'hdd_18_ma7', 'hm_avg', 'rn_day', 'ss_day', 'is_holiday', 'cdd_18_sq', 'hdd_18_sq']
+  → dropped: ['ws_avg', 'pop_total', 'heat_th_2day_any', 'cold_th_2day_any']
+
+=== AIC 후방제거 (demo: AIC는 단순화 못함) ===
+  [AIC] step 0: -ws_avg (AIC=-23832.98)  |S|=13
+  [AIC] step 1: -pop_total (AIC=-23834.87)  |S|=12
+  [AIC] step 2: -heat_th_2day_any (AIC=-23835.94)  |S|=11
+  [AIC] step 3: -cold_th_2day_any (AIC=-23836.49)  |S|=10
+  [AIC] 수렴: 더 낮추는 제거 없음  |S|=10
+  → AIC-backward 잔존(10)
+
+=== head-to-head (v3c vs v5) ===
+          model  n_exog       AIC       BIC  MAE_2025  MAE_2025_rolling  MAPE_2025_%  PI95_cov_%  Winkler  dBIC_vs_v3c  dMAE_vs_v3c
+            v3c      14 -23830.96 -23698.85   2667.51           1357.31         3.63       95.34 18304.86         0.00         0.00
+v5_bic_backward      10 -23836.49 -23730.80   2670.44           1354.47         3.64       95.34 18416.26       -31.95         2.93
+       v5_drop4      10 -23836.49 -23730.80   2670.44               NaN         3.64       95.34 18416.26       -31.95         2.93
+
+=== 채택 판정 (v5_bic_backward) ===
+  ✓ n_exog<14
+  ✓ BIC<=v3c
+  ✓ one-shot MAE<=1.02x
+  ✓ rolling MAE<=1.02x
+  ✓ PICP>=94
+  ✗ Winkler<=v3c
+  → 미채택: 더 간결하나 OOS 비용 — v3c 유지
+  (greedy 미선택 4개 = ['ws_avg', 'pop_total', 'cold_th_2day_any', 'heat_th_2day_any'])
+
+저장: v5_ablation.csv, v5_results.csv, v5c_forecast.csv

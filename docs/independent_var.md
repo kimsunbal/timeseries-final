@@ -207,6 +207,14 @@ peak_mw 상관 +0.57. 2010 → 2024 CDD 연합계 837 → 1023 (기후변화 추
 핵심과 일치). 추세항(`pop_total`·`ip_total`·`ev_stock`)은 한계 신호가 미약(수렴 후 비유의)하고
 greedy는 v3c AIC를 못 이김 → **본모델 v3c 유지 타당**. 결과: `research_log/2026-05-30_1645_*.md`.
 
+### 5.5 v3c 단순화 검증 (BIC 후방제거)
+
+v3c 14개에서 BIC 후방제거 시 `ws_avg`·`pop_total`·`heat_th_2day_any`·`cold_th_2day_any`
+4개가 떨어져 v5(10개) 수렴 — **greedy 미선택 집합(§5.4)·AIC 후방제거와 정확히 일치**(삼중 수렴).
+이 4개는 AIC·BIC 모두 제거 시 개선되는 잉여(p≫0.05). v5는 v3c 대비 AIC −5.5·BIC −32,
+one-shot MAE +0.11%·Winkler +0.6%로 **사실상 동등** → 4개 잉여 확정하되 **v3c 유지**.
+결과: `research_log/2026-05-30_1730_v5_단순화_검증.md`.
+
 ## 6. 구조변화 더미 (Regime / Break Dummies)
 
 공식 특보 변수(B)와 함께 투입하여 기준 개정에 따른 계수 변화를 흡수한다.
