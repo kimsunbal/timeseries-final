@@ -1,0 +1,49 @@
+데이터: 2010-01-01 ~ 2025-12-31 (5844행)
+후보 31개, windows=[2010, 2018, 2021], smoke=False, serial=False
+
+=== window 2010~2024 선택 시작 ===
+  [2010~] step 0: +is_holiday (AIC=-22110.3, dAIC=-1922.1, p=0.000, VIF=1.0)  |S|=1
+  [2010~] step 1: +cdd_18_sq (AIC=-22633.0, dAIC=-2444.7, p=0.000, VIF=1.0)  |S|=2
+  [2010~] step 2: +ta_hourly_max (AIC=-23065.8, dAIC=-2877.5, p=0.000, VIF=1.7)  |S|=3
+  [2010~] step 3: +hdd_18_ma7 (AIC=-23180.2, dAIC=-2992.0, p=0.000, VIF=9.0)  |S|=4
+  [2010~] step 4: -ta_hourly_max (제거)  |S|=3
+  [2010~] step 5: +hdd_18_sq (AIC=-23076.8, dAIC=-2888.6, p=0.000, VIF=4.7)  |S|=4
+  [2010~] step 6: +ss_day (AIC=-23497.3, dAIC=-3309.0, p=0.000, VIF=1.0)  |S|=5
+  [2010~] step 7: +cdd_18_ma7 (AIC=-23613.0, dAIC=-3424.7, p=0.000, VIF=9.5)  |S|=6
+  [2010~] step 8: +hm_avg (AIC=-23660.0, dAIC=-3471.8, p=0.000, VIF=2.8)  |S|=7
+  [2010~] step 9: +ev_stock (AIC=-23674.0, dAIC=-3485.7, p=0.017, VIF=1.0)  |S|=8
+  → discovered(8): ['is_holiday', 'cdd_18_sq', 'hdd_18_ma7', 'hdd_18_sq', 'ss_day', 'cdd_18_ma7', 'hm_avg', 'ev_stock']
+
+=== window 2018~2024 선택 시작 ===
+  [2018~] step 0: +is_holiday (AIC=-9986.6, dAIC=-832.7, p=0.000, VIF=1.0)  |S|=1
+  [2018~] step 1: +cdd_18 (AIC=-10185.3, dAIC=-1031.4, p=0.000, VIF=1.0)  |S|=2
+  [2018~] step 2: +ta_hourly_max (AIC=-10511.8, dAIC=-1357.9, p=0.000, VIF=2.4)  |S|=3
+  [2018~] step 3: +ss_day (AIC=-10591.7, dAIC=-1437.8, p=0.000, VIF=1.0)  |S|=4
+  [2018~] step 4: +hdd_18_ma7 (AIC=-10636.1, dAIC=-1482.2, p=0.000, VIF=8.3)  |S|=5
+  [2018~] step 5: -ta_hourly_max (제거)  |S|=4
+  [2018~] step 6: +hdd_18_sq (AIC=-10721.7, dAIC=-1567.8, p=0.000, VIF=4.3)  |S|=5
+  [2018~] step 7: +hm_avg (AIC=-10743.6, dAIC=-1589.7, p=0.000, VIF=2.8)  |S|=6
+  [2018~] step 8: +ip_total (AIC=-10761.0, dAIC=-1607.1, p=0.000, VIF=1.1)  |S|=7
+  [2018~] step 9: +rn_day (AIC=-10767.2, dAIC=-1613.3, p=0.001, VIF=1.5)  |S|=8
+  [2018~] step 10: +heat_feels_th_2day_adv (AIC=-10771.5, dAIC=-1617.7, p=0.028, VIF=1.3)  |S|=9
+  → discovered(9): ['is_holiday', 'cdd_18', 'ss_day', 'hdd_18_ma7', 'hdd_18_sq', 'hm_avg', 'ip_total', 'rn_day', 'heat_feels_th_2day_adv']
+
+=== window 2021~2024 선택 시작 ===
+  [2021~] step 0: +is_holiday (AIC=-5762.8, dAIC=-496.7, p=0.000, VIF=1.0)  |S|=1
+  [2021~] step 1: +cdd_18_ma3 (AIC=-5882.4, dAIC=-616.3, p=0.000, VIF=1.0)  |S|=2
+  [2021~] step 2: +hdd_18_sq (AIC=-6032.3, dAIC=-766.3, p=0.000, VIF=1.2)  |S|=3
+  [2021~] step 3: +ss_day (AIC=-6130.2, dAIC=-864.2, p=0.000, VIF=1.0)  |S|=4
+  [2021~] step 4: +hdd_18_ma7 (AIC=-6143.3, dAIC=-877.3, p=0.000, VIF=5.6)  |S|=5
+  [2021~] step 5: +is_weekend (AIC=-6157.1, dAIC=-891.0, p=0.027, VIF=1.0)  |S|=6
+  → discovered(6): ['is_holiday', 'cdd_18_ma3', 'hdd_18_sq', 'ss_day', 'hdd_18_ma7', 'is_weekend']
+
+=== 최종 요약 (discovered vs v3c) ===
+   window             model  n_exog       AIC  MAE_2025  MAPE_2025_%  dAIC_vs_v3c  dMAE_vs_v3c
+2010~2024 greedy_discovered       8 -23751.85   2665.52         3.65        79.03        -5.46
+2010~2024      v3c_baseline      14 -23830.88   2670.98         3.63         0.00         0.00
+2018~2024 greedy_discovered       9 -10891.54   3346.71         4.38       109.66      1000.39
+2018~2024      v3c_baseline      14 -11001.20   2346.32         3.17         0.00         0.00
+2021~2024 greedy_discovered       6  -6181.31   2393.00         3.26       169.30       269.67
+2021~2024      v3c_baseline      14  -6350.62   2123.33         2.93         0.00         0.00
+
+저장: greedy_selection_path.csv, greedy_final_summary.csv, greedy_window_matrix.csv
