@@ -1,5 +1,5 @@
 """
-계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화) → v6_holiday(공휴일 구조화)
   이 파일 = v5_simplify (parsimony 14→10, BIC 후방제거 — 검증된 간결변형, 주모델 아님).
   prev: model_arimax_v5_greedy.py   next: —
 

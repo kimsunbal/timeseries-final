@@ -1,5 +1,5 @@
 """
-계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화) → v6_holiday(공휴일 구조화)
   이 파일 = v1 (차수 그리드 3×3 + phase1 16 exog, AIC 최저 선택).
   prev: —   next: model_arimax_v2.py
 
