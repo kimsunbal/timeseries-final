@@ -1,4 +1,8 @@
 """
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+  이 파일 = v4_ev (v3c + 전기차 stock/flow ×3window 민감도 — 무신호, 미채택).
+  prev: model_arimax_v3.py   next: model_arimax_v5_greedy.py (게이트 일반화)
+
 전기차 등록대수 — 서브기간 민감도 분석 (Phase 2, 본모델과 완전 분리).
 
 목적: 본모델(ARIMAX v3c)을 **건드리지 않고**, 전기차 등록대수(stock/flow)를

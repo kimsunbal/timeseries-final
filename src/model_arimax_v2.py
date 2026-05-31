@@ -1,4 +1,8 @@
 """
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+  이 파일 = v2 (다중공선 정리 → 14 exog 확정).
+  prev: model_arimax.py   next: model_arimax_v3.py
+
 ARIMAX v2 — 다중공선성 정리 그리드.
 
 v1 결과 (2026-05-26_1830 로그) 후속:

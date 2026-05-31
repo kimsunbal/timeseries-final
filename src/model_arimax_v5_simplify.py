@@ -1,7 +1,11 @@
 """
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+  이 파일 = v5_simplify (parsimony 14→10, BIC 후방제거 — 검증된 간결변형, 주모델 아님).
+  prev: model_arimax_v5_greedy.py   next: —
+
 ARIMAX v5 — v3c 단순화(parsimony) 검증. **본모델 v3c 대체 아님, 별도 변형.**
 
-greedy 변수선택(`model_greedy_selection.py`, 로그 2026-05-30_1645)이 v3c 변수 중
+greedy 변수선택(`model_arimax_v5_greedy.py`, 로그 2026-05-30_1645)이 v3c 변수 중
 `ws_avg`·`pop_total`·`cold_th_2day_any`·`heat_th_2day_any` 등을 **어느 window에서도
 미선택**으로 식별. 이 4개는 **AIC·BIC 모두 제거 시 개선**되는 잉여 변수다
 (BIC 페널티 ln(5479)≈8.61 > AIC 2 라 BIC가 더 강하게 떨군다). 후방제거로 식별·검증한다.

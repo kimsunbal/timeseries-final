@@ -1,7 +1,11 @@
 """
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+  이 파일 = v5_greedy (v4_ev의 게이트를 31변수로 일반화한 변수선택 감사 → v5의 근거).
+  prev: model_arimax_v4_ev.py   next: model_arimax_v5_simplify.py (감사 결과로 단순화)
+
 탐욕적 변수선택 (Forward-Backward Add/Drop) — 증분신호 검정 일반화.
 
-EV 민감도(`model_ev_sensitivity.py`)의 4조건 게이트(ΔAIC·p·VIF + ΔMAE 확인)를
+EV 민감도(`model_arimax_v4_ev.py`)의 4조건 게이트(ΔAIC·p·VIF + ΔMAE 확인)를
 **모든 수집 변수**로 일반화한다. 빈 세트에서 시작해 변수를 greedy하게 넣었다
 뺐다(forward-backward)하며, 어떤 변수가 증분 신호를 갖는지 재발견한다.
 본모델(ARIMAX v3c)·기존 노트북·exog 산출물은 **일절 건드리지 않는** 독립 분석.
@@ -86,7 +90,7 @@ VAR_CLUSTER = {v: c for c, vs in CLUSTERS.items() for v in vs}
 
 def load_frame() -> pd.DataFrame:
     """peak_mw + exog + ev 를 일자 인덱스로 병합, v3c 파생변수 부착.
-    (model_ev_sensitivity.load_frame 과 동일 레시피)."""
+    (model_arimax_v4_ev.load_frame 과 동일 레시피)."""
     y = pd.read_csv(PROCESSED / "peak_mw_2010_2025.csv",
                     encoding="utf-8-sig", parse_dates=["tm"]).set_index("tm")
     X = pd.read_csv(PROCESSED / "exog_daily_2010_2025.csv",

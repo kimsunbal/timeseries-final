@@ -215,6 +215,9 @@ v3c 14개에서 BIC 후방제거 시 `ws_avg`·`pop_total`·`heat_th_2day_any`·
 one-shot MAE +0.11%·Winkler +0.6%로 **사실상 동등** → 4개 잉여 확정하되 **v3c 유지**.
 결과: `research_log/2026-05-30_1730_v5_단순화_검증.md`.
 
+> 모델 버전 계보(v1~v5) 전체 정리·파일 매핑은 `src/MODELS.md` 및
+> `research_log/2026-05-31_1000_모델_변천사_v1_v5_정리.md` 참조.
+
 ## 6. 구조변화 더미 (Regime / Break Dummies)
 
 공식 특보 변수(B)와 함께 투입하여 기준 개정에 따른 계수 변화를 흡수한다.

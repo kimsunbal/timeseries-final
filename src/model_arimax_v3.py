@@ -1,4 +1,8 @@
 """
+계보(전체 비교: src/MODELS.md): v1 → v2 → v3c(주모델) → v4_ev(EV, 미채택) → v5_greedy·v5_simplify(변수선택→단순화)
+  이 파일 = v3 (a:log → b:OR더미 → c:비선형 기온). **v3c가 현재 주모델.**
+  prev: model_arimax_v2.py   next: model_arimax_v4_ev.py (EV 변형 시도)
+
 ARIMAX v3 — 잔차·극단 계절 개선 3단계 (log → OR더미 → 비선형 기온).
 
 v2 (2026-05-26_1734_ARIMAX_v2_다중공선성_정리.md) 후속.
